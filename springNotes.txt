@@ -1,0 +1,27 @@
+
+url: https://es.stackoverflow.com/questions/374827/ejecutar-proyecto-java-con-spring-en-cmd
+
+describe: compilar, instalar dependencias etc
+command : mvnw.cmd
+
+describe: iniciar la aplicacion
+command : mvnw spring-boot:run
+
+describe: iniciar el jar de la carpeta target
+command : java -jar target\webapp2-0.0.1-SNAPSHOT.jar
+
+describe:
+command :
+
+describe:
+command :
+
+describe:
+command :
+
+describe:
+command :
+
+describe:
+command :
+
