@@ -1,0 +1,288 @@
+file and directory management | gestión de archivos y directorios
+describe: 
+command : 
+
+file viewing and editing | visualización y edición de archivos
+describe: 
+command : 
+
+process management | gestión de proceso
+describe: 
+command : 
+
+system information | información del sistema
+describe: 
+command : 
+
+user and group management 
+describe: 
+command : 
+
+network configuration and monitoring 
+describe: 
+command : 
+
+package management
+describe: 
+command : 
+
+**************************** Basic ****************************
+describe: loguiarte como super usuario(root)
+command : su
+
+describe: actualiza clave de root
+command : sudo -i
+
+describe: elimina el contenido de la pantalla 
+command : clear
+
+describe: La arquitectura de tu sistema
+command : arch
+
+describe: Ver el direcctorio en el que te encuentras
+command : pwd
+
+describe: regresar una ruta anterior (change dorectory hacia atras)
+command : cd ..
+
+describe: listar los elementos  
+command : ls
+
+describe: listar los elementos ocultos 
+command : ls -la
+
+
+describe: listar los elementos (usuarios|permisos) (vertical)
+command : ls -l
+
+describe: Visualizar que usuario es
+command : whoami
+
+describe: renombrar una carpeta o directorio 
+command : sudo mv directorio directorio_renombrado
+example : sudo mv Discord discord
+
+describe: eliminar un paquete|carpeta|directorio 
+command : sudo rm -r directoryname
+example : sudo rm -r Discord
+
+describe: eliminar un paquete 
+command : rm -r [package_name]
+example : rm -r code-1.79.2-1686734266.el7.x86_64.rpm
+
+
+describe: ENTRA terminal en toda la pantalla 
+command : ctrl + alt + f5
+
+describe: SALIR terminal en toda la pantalla 
+command : ctrl + alt + f1
+
+**************************** DNF ****************************
+describe: Instalar la imagen chidory de la consola
+command : dnf install neofetch
+
+describe: Antualizar el sistema de fedora [usuario: root]
+command : dnf update
+
+describe: [usuario: root] 
+command : dnf upgrade
+
+describe: 
+command : sudo dnf groupupdate core
+
+describe: Todo junto 
+command : sudo dnf update -y && sudo dnf upgrade -y
+
+
+describe: describe 
+command : cat /etc/os-release
+
+describe: reiniciar el sistema 
+command : reboot
+command : init 6
+
+describe: 
+command : more /etc/os-release
+
+****************** GROUP ******************
+describe:  Historial de las aplicaciones 
+command : dnf history list
+
+describe: listar los grupos 
+command : dnf grouplist
+
+describe: listar los grupos con las descripcion del @(arroba) 
+command : dnf grouplist -v 
+
+describe: Installar group 
+command : dnf groupinstall "[app_name]"
+example : dnf group install "KDE Plasma Workspaces"
+          dnf group install "Deepin Desktop Environment"
+          
+
+describe: eliminar o remover group  
+command : yum groupremove "LibreOffice"
+          yum groupremove "GNOME Desktop Environment"
+
+------------ RPM FUSION | rpmFusion ----------------------
+describe: Buscar una aplicacion
+command : dnf search [app_name]
+
+describe: install una aplicacion 
+command : dnf install [app_name] -y ==> (-y: para que no te pida el conforme)
+example : sudo dnf install google-chrome-stable.x86_64 -y
+
+describe: remover|desintalar  una aplicacion
+command : dnf remove [app_name]
+example : sudo dnf remove discord
+example : sudo dnf remove 
+
+describe: 
+command : dnf help
+
+
+****************** Install Programas using .tar.gz file ******************
+Paso 01
+describe: descomprimir y copiar en archivo en la ruta /opt
+command : sudo tar -xvzf discord-[last_Version].tar.gz -C /opt
+example : sudo tar -xvzf discord-0.0.29.tar.gz -C /opt
+          sudo tar -xvzf postman-linux-x64.tar.gz -C /opt
+          sudo tar -xvzf eclipse-jee-2023-06-R-linux-gtk-x86_64.tar.gz -C /opt
+          sudo cp -r eclipse/ /opt ==> (copiar la carpeta)
+          sudo tar -xvzf spring-tool-suite-4-4.20.1.RELEASE-e4.29.0-linux.gtk.x86_64.tar.gz -C /opt
+          sudo cp -r /sts.desktop /opt/sts-4.20.1.RELEASE/
+
+
+Paso 02
+describe: Create a symbolic link in one of path directories ()
+          copiar la carpeta /opt/Discord/Discord a /usr/bin/Discord  
+command : sudo ln -sf /[ruta_sourceFolder] /[ruta_destinationFolder]
+example : sudo ln -sf /opt/Discord/Discord /usr/bin/Discord
+          sudo ln -sf /opt/Postman/Postman /usr/bin/Postman
+          sudo ln -sf /opt/eclipse/eclipse /usr/bin/eclipse
+          sudo ln -sf /opt/sts-4.20.1.RELEASE/SpringToolSuite4 /usr/bin/SpringToolSuite4
+
+
+Paso 03
+describe: 
+command : 
+example : sudo cp -r /opt/Discord/discord.desktop /usr/share/applications
+          sudo cp -r /opt/Discord/discord.desktop /usr/share/applications
+          sudo cp -r /opt/Postman/postman.desktop /usr/share/applications
+          sudo cp -r /opt/eclipse/eclipse.desktop /usr/share/applications
+          sudo cp -r /opt/sts-4.20.1.RELEASE/sts.desktop /usr/share/applications
+
+
+
+
+
+****************** MANAGEMENT PAQUETES(APPs) ******************
+describe: listar packages(APPs) en orden cronologica (comando de red hat)
+command : rpm -qa --last
+
+describe: listar un package(APP) especifica
+command : 
+example : rpm -qa --last | grep vim
+          rpm -qa --last | grep libavformat-free-6.0-5.fc38.x86_64
+
+describe: listar package(APPs) orden alfabetica
+command : dnf list 
+
+******************  Install LOCALES PAQUETES(APPs) [dnf] ****************** 
+----- Metodo LARGO (tienen llave externa)
+describe: importar una llave 
+command : sudo rpm --import [key_name]
+example : sudo rpm --import package-signing-key-5-12-6.pub
+
+describe: instalas un paquete (./ = busca las dependencia del la aplicacion de manera local y luego la busca en internet)
+command : sudo dnf install ./[app_name]
+example : sudo dnf install ./zoom_x86_64.rpm
+
+----- DESINSTALAR una aplicacion manual [dnf] -----
+command : sudo dnf remove [app_name]
+example : sudo dnf remove zoom_x86_64.rpm
+
+
+----- Metodo CORTO (Los sitios oficiales tienen llave interna)
+describe: instalar un paquete(aplicacion)
+command : sudo rpm -i [app_name]
+example : sudo rpm -i zoom_x86_64.rpm
+
+----- DESINSTALAR una aplicacion manual -----
+describe: no te eliminas las dependencias que esta ulitizando actualmente el paquete (manera mas segura, mas recomendable)
+          -e : erriser  
+command : sudo rpm -e [app_name] 
+example : 
+
+----- Install LOCALES APP [yum] -----
+describe: instalar un paquete(aplicacion)
+command : sudo yum localinstall [app_name]
+example : sudo yum localinstall p7zip-17.05-1.mga9.x86_64.rpm
+
+
+****************** Extract FILE (.tar, .zip) ******************
+
+describe: To extract files from a .tar.gz archive:
+command : tar -xf archive.tar
+example : tar -xf archive.tar
+        : tar -xf postman-linux-x64.tar.gz 
+
+unzip archive.zip
+describe: To extract files from a .zip archive:
+command : unzip archive.zip
+example : unzip JAVA11-FEB-2022.zip
+
+****************** instalar manual app ******************
+describe: descomprimir en la carpeta /opt 
+command : sudo tar -xvzf discord-[last_Version].tar.gz -C /opt
+example : sudo tar -xvzf discord-0.0.29.tar.gz -C /opt
+
+describe: copiar la carpeta /opt/Discord/Discord en la carpeta /usr/bin/Discord 
+command :
+example : sudo ln -sf /opt/Discord/Discord /usr/bin/Discord
+
+describe: copiar el archivo /opt/Discord/discord.desktop en la carpeta /usr/bin/Discord 
+command : 
+example : sudo cp -r /opt/Discord/discord.desktop /usr/share/applications
+
+
+
+
+****************** NANO ******************
+describe: 
+command : nano [file_name]
+example : 
+
+describe: Guardar cambios en el archivo 
+command : ctrl + o
+
+describe: Salir del archivo
+command : ctrl + x 
+
+*************************** JAVA ****************************************
+describe: installar la version de java
+command : sudo dnf install java-[vesion]-openjdk.x86_64
+example : sudo dnf install java-11-openjdk.x86_64
+          sudo dnf install java-20-openjdk.x86_64  
+
+describe: Seleccioanar la version de java
+command : sudo alternatives --config java 
+
+************ Prioridad de instalacion de Paquetes **************
+1- rpm
+2- compilarlos
+3- ppa
+4- zfs
+5- flatpack
+6- snap
+************************************************************
+
+user: dentaimagen2@gmail.com
+pass: MariaRojas123@ 
+
+**********
+dnf dragra
+
+
+++++++++++++++++++ JAVA +++++++++++++++++++++++++++++++
+command: echo $env:JAVA_HOME
