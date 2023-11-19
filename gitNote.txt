@@ -46,7 +46,9 @@ Example:
 		git config --global user.email erick.eduardo.ee7@gmail.com
 
 command : git config user.password 'your_token'
-Example : git config --global user.password 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
+
+Example : git config --global user.password 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 //last
+          git config --global user.password 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		
 
 command: git config --global http.proxy "yourProxy_sin_S" 
 		 git config --global https.proxy "yourProxy_con_S"
