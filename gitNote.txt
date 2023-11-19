@@ -1,0 +1,176 @@
+ ****************************** GLOBAL CONGIGURATION ******************************
+--------------------------------------
+|        |    USER    |    PASS      |
+----------------------------------     
+| EVERIS |  enavarrg  |   Peru123.   |
+--------------------------------------
+
+-------------------------------------------------------------------------------------------------------------------
+|    PROYECTO   |   REPOSITORY   |       USER       |    PASS      |              email                            |
+------------------------------------------------------------------------------------------------------------------- 
+|  CORONAVIRUS  |     gitLab     |   erick.everis   |   LoveGitLab |  erick.eduardo.navarrrete.guerrero@everis.com |
+-------------------------------------------------------------------------------------------------------------------
+|  CORONAVIRUS  |     gitLab     |   ee11.everis    |   Everis123  |             erick.everis@gmail.com            |
+-------------------------------------------------------------------------------------------------------------------
+
+@erick.everis
+
+
+**************** GET ****************
+Verificar la configuración global de git.
+	comman: git config --list
+
+'visualizar configuraciones especificas'
+	command: git config user.name
+	command: git config user.email
+	command: git config user.password
+	command: git config http.proxy
+	command: git config https.proxy
+	command: git config http.sslVerify
+
+'Visualizar configuración global'
+	Command: git config --list
+	Command: git config --l
+
+**************** SET ****************
+command: git config --global user.name "yourUserName"
+Example:
+		git config --global user.name "Erick Eduardo"
+		git config --global user.name "ee11"
+
+command: git config --global user.email "your_email"
+Example:
+		git config --global user.email enavarrg@canvia.com
+		git config --global user.email erick.eduardo.navarrrete.guerrero@everis.com
+		git config --global user.email erick.everis@gmail.com
+		git config --global user.email erick.eduardo.ee7@gmail.com
+
+command : git config user.password 'your_token'
+Example : git config --global user.password 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
+
+command: git config --global http.proxy "yourProxy_sin_S" 
+		 git config --global https.proxy "yourProxy_con_S"
+Example:
+		git config --global http.proxy http://NP154909:Suraperu8@10.219.117.29:3128
+		git config --global https.proxy https://NP154909:Suraperu8@10.219.117.29:3128
+
+command: git config --global --unset http.proxy
+Example:
+		git config --global --unset http.proxy
+	
+command: git config --global --unset http.proxy
+Example:
+	
+-- Desactivar certificado SSL
+command: 
+Example
+		git http.sslVerify=false
+
+ ******************************* MANAGEMENT REPOSITORY ******************************
+-- delete BRANCH
+	command: git branch -d <local-branch>
+
+-- Ver LOGs
+	command: git log
+
+-- Visualizar Todas las BRANCHs (Ramas Existentes)
+	command: git branch -a
+	
+
+-- Visualizar en que RAMA estas branch
+	command: git branch
+
+-- Visualizar el estado de mi espacioDeTrabajo (Unmodified)
+	command: git status
+
+-- Create repository
+	command: git init
+
+-- (AGREGAR) Mover mis archivos creados o cambiados  al  areaDePrepacion (modified)
+	(AGREGAR)Mover todos los archivos
+	command: git add .
+
+	(AGREGAR)Mover archivos individuales
+	command: git add nameFile
+		Example
+			command: git add   	
+
+-- Mover mis archivos al Repositorio(tu carpeta git) (staged)
+	command: git commit -m "";
+	
+	
+-- CREATE BRANCH - CREAR RAMA 
+command: git checkout -b nombreDeTuRama	
+	Example
+	command: git checkout -b orchestrator-synchromous
+	command: git checkout -b feature/CHC-10
+	command: git checkout -b feature/CHC-70
+	
+-- SUBIR Rama 
+command: git push origen nombreDeTuRama
+   Example
+   command: git push --set-upstream origin nombreRama
+   command: git push --set-upstream origin orchestrator-synchromous
+   command: git push --set-upstream origin feature/#TikectJira
+   command: git push --set-upstream origin feature/CHC-10
+   command: git push --set-upstream origin feature/CHC-69
+
+-- Cambiar TAG
+    git checkout tags/core-assi-2.0.34
+	
+	git checkout tags/sevenkingdom-core-assi-12.19
+	git checkout tags/sevenkingdom-core-assi-1.2.18
+	
+-- ACTUALIZAR RAMA
+	command: git pull  	
+    
+-- HOMOLOGAR UNA 
+git merge develop feature/my_rama
+----------------------------------------	
+##########################################################################	
+---------------------------------------------------------------------------
+
+
+************* Descargar un proyecto con certificado SSL
+
+git -c http.sslVerify=false clone http://git.devops.sura.net.pe/integra/proyecto-comunicaciones.git
+
+
+ 
+
+ ************************* Management of Development Projects ************************
+** clona reposotorio a tu maquina local
+git clone 
+
+git checkout
+
+git status
+
+*** Subir cambios
+git add .
+git add
+git commit -m
+git push
+
+*** ADMINISTRACION DE TAG
+visualizar lista de los TAGs existentes
+git tag
+
+Para crear tags
+soporte-reporteie-service-1.1
+
+git tag -a soporte-reporteie-service-1.1 -m "Reporte IE Tag 1.1"
+git push origin --tags
+ 
+** ejemplo para gestor-s3archivos-reja
+git tag -a gestor-s3archivos-reja-1.0 -m "S3archivos Tag 1.0"
+
+
+** salir 
+
+
+USUARIO TODO PODEROSO
+
+user: luis.polo@sura.pe
+pass: Suraperu32	
+	
