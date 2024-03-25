@@ -1,0 +1,8 @@
+describe: Para guardar 
+command : ctrol + 0
+
+describe: Para salir 
+command : ctrol + x
+
+describe: Para leer el contenido del archivo 
+command : cat [app_name]
