@@ -1,0 +1,58 @@
+user: opc
+
+-- listar
+Kubectl get pods -A 
+
+kubectl -n bff get pods
+kubectl -n procedure get pods
+kubectl -n support get pods
+
+kubectl -n bff logs bff-digital-procedures-transaccional-web-deploymen --tail 100 -f
+
+ kubectl -n bff get ing 
+ kubectl -n bff get ing bff-digital-procedures-transactional-web-ing -o yaml
+
+
+'CONECCION DEVELOP'
+	command: $ENV:KUBECONFIG= "kube-dev"
+
+'CONECCION UAT'
+	command: $ENV:KUBECONFIG= "kube-ua-nt" 
+		
+'CONECCION STG'		
+	command: $ENV:KUBECONFIG="kube-staging"
+		
+-- Visualizar services (puedes ver la IP)l
+   command: kubectl get services
+
+-- Visualizar PODs
+   command: Kubectl get pods
+            Kubectl get pods -A 
+	-- Detalle POD
+	   command: kubectl describe pods name_pod
+
+-- Visualizar LOGs
+   command: Kubectl logs -f name_pod
+   Example:         
+			Kubectl logs -f assi-business-account-backend-9c559c58b-p7ddp
+			Kubectl logs -f assi-business-account-backend-bc6565d98-8nfq2
+			Kubectl logs -f assi-business-account-backend-749b8795db-9sgg9
+
+-- Reiniciar un POD
+	command: kubectl delete pods assi-admin-6684f7988-rn9dd			
+
+-------------------------------------------------------------------
+Example Erick
+kubectl -n bff logs bff-digital-procedures-transaccional-web-deploymen --tail 100 -f
+
+
+kubectl -n Nombre_del_name_space get pods ----> para listar todos los pods 
+
+kubectl get ns ----> para listar los name space del aks 
+
+kubectl -n Nombre_del_name_space logs nombre_del_pod -----> muentra todos los logs del pod
+
+kubectl -n Nombre_del_name_space logs nombre_del_pod --tail 20     -----> muentra las ultimas 20 lineas de los logs del pod
+
+kubectl -n Nombre_del_name_space logs nombre_del_pod --tail 20 -f  -----> muentra las ultimas 20 lineas de los logs del pod y lo deja en tiempo real 
+
