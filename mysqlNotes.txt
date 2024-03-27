@@ -1,0 +1,8 @@
+ 
+
+describe: entrar a la consola de mysql 
+command : sudo mysql -u root -p
+
+describe: Salir de la consola de mysql 
+command : ctrl + d
+

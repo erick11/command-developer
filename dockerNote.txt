@@ -1,0 +1,122 @@
+ 
+describe: version de docker
+command : sudo docker version
+
+describe: visializar el estado del servicio
+command : systemctl status docker
+
+describe: iniciar el servicio de docker
+command : systemctl start docker
+
+describe: reiniciar el servicio de docker 
+command : systemctl restart docker
+
+
+************ Contenedor **************
+describe: iniciar el contenedor en segundo plano (-d) 
+command : docker run -d --name [conteiner_name] [imagen_name]:[version]
+          docker run --name mysql-standalone -e MYSQL_ROOT_PASSWORD=password -e MYSQL_DATABASE=test -e MYSQL_USER=sa -e MYSQL_PASSWORD=password -p 3306:3306 -d mysql:5.6
+          docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag
+          docker run -it --network some-network --rm mysql mysql -hsome-mysql -uexample-user -p
+          docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -p 3306:3306 -d mysql:tag
+example : docker run -d --name conteinerphp php:8.1.7-apache-bullseye
+          docker run --name conteiner-mysql -e MYSQL_ROOT_PASSWORD=mysql -p 3306:3306 -d mysql:8.2.0
+          docker run --name cntr-mysql -e MYSQL_ROOT_PASSWORD=mysql -e MYSQL_DATABASE=db_prueba -p 3306:3306 -d mysql:8.2.0
+
+describe: iniciar el contenedor en segundo plano (-d) | MySql
+command : docker run --name [conteiner_name] -e MYSQL_ROOT_PASSWORD=[password] -e MYSQL_DATABASE=[name_database] -p 3306:3306 -d mysql:[tag]
+example : docker run --name cntr-mysql -e MYSQL_ROOT_PASSWORD=mysql -e MYSQL_DATABASE=db_prueba -p 3306:3306 -d mysql:8.2.0
+
+describe: iniciar el contenedor en segundo plano (-d) | Potsgres SQL
+command : docker run --name [conteiner_name]  -d postgres:[tag]
+example : docker run --name cntr-postgresSQL -e POSTGRES_PASSWORD=postgresSQL123@ -p 1433:1433 -d postgres:16.1
+
+
+describe: iniciar el contenedor en segundo plano (-d) | SQL Server
+command : docker run -it --name sqlserver1 -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=r00t.R00T' -p 1401:1433  mcr.microsoft.com/mssql/server:2017-latest
+          docker run --name [conteiner_name] -e MYSQL_ROOT_PASSWORD=[password] -e MYSQL_DATABASE=[name_database] -p 3306:3306 -d mysql:[tag]
+          docker run -it -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=SqlServer123' -p 1401:1433 --name sqlserver1 microsoft/mssql-server-linux:2017-latest
+example : docker run -it --name cntr-sqlServer -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=r00t.R00T' -p 1433:1433 -d mcr.microsoft.com/mssql/server:2017-latest
+          docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=yourStrong(!)Password" -p 1433:1433 -d mcr.microsoft.com/mssql/server:2022-latest
+          docker run --name cntr-sqlserver -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=sqlserver" -p 1433:1433 -d mcr.microsoft.com/mssql/server:2022-latest
+          docker run -it -e 'ACCEPT_EULA=Y' -e 'MSSQL_SA_PASSWORD=r00t.R00T' -p 1401:1433 --name sqlserver1 mcr.microsoft.com/mssql/server:2017-latest
+
+describe: iniciar el contenedor en segundo plano (-d) | MongoDB
+command : docker run --name [conteiner_name]  -d mongodb/mongodb-community-server:[tag]
+example : docker run --name cntr-mongoDB -p 27017:27017 -d mongodb/mongodb-community-server:latest
+          docker run --name cntr-mongoDB -e MONGO_INITDB_ROOT_USERNAME='rootMongoDB' -e MONGO_INITDB_ROOT_PASSWORD='mongodb' -e MONGO_INITDB_DATABASE='db_pruebaMongo' -p 27017:27017 -d mongodb/mongodb-community-server:latest
+            -> docker exec -it cntr-mongoDB mongosh
+                -> db.runCommand({hello: 1})
+
+
+
+describe: iniciar un contenedor | Ubuntu
+          -d : el contenedor se ejecuta en un segundo plano
+          -it: habilita un terminal
+command : docker run --name [conteiner_name] -d ubuntu:[tag]
+example : docker run --name cntr-ubuntu -it -d ubuntu:24.04
+
+describe: iniciar un contenedor | Debian
+          -d : el contenedor se ejecuta en un segundo plano
+          -it: habilita un terminal
+command : docker run --name [conteiner_name] -d debian:[tag]
+example : docker run --name cntr-debian -it -d debian:12.4
+
+describe: iniciar un contenedor | Archlinux
+          -d : el contenedor se ejecuta en un segundo plano
+          -it: habilita un terminal
+command : docker run --name [conteiner_name] -d archlinux:[tag]
+example : docker run --name cntr-archlinux -it -d archlinux:base
+
+          
+describe: listar los contenedores que se estan ejecutando
+command : docker ps
+
+describe: listar los contenedores que se estan ejecutando
+command : docker container ls
+
+describe: listar los contenedores eliminados
+command : docker ps -a
+
+describe: acceder al contenedor en segundo plano (-d) 
+command : docker exec -it [conteiner_name] bash
+example : docker exec -it conteinerphp bash
+          docker exec -it conteiner-mysql bash 
+           -> mysql -p
+          docker exec -it cntr-ubuntu bash
+          docker exec -it cntr-archlinux bash
+          docker exec -it mongo mongosh | docker exec -it cntr-mongoDB bash
+           -> db.runCommand({hello: 1})
+
+describe: detener un contenedor
+command : docker stop [conteiner_name]
+example : docker stop conteinerphp
+
+describe: eliminar un contenedor
+command : docker rm [conteiner_id]
+example : docker rm cntr-sql
+
+************ Imagenes **************
+describe: listar las imagenes existentes
+command : docker images
+
+describe: eliminar todos los contenedores
+command : docker system prune
+
+describe: descargar imagen [last_version]
+command : docker pull
+example : docker pull mysql
+          
+describe: descargar images version especifica
+command : docker pull [imagen_name]:version
+
+
++++++++++++ docker compose ++++++++++++++++
+
+describe: iniciar el servicio
+command : docker-compose up -d
+
+describe: sin que la consola se quede abierta -d
+command : docker-compose up -d
+
+
