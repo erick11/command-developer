@@ -64,9 +64,8 @@ command: git config --global --unset http.proxy
 Example:
 	
 -- Desactivar certificado SSL
-command: 
-Example
-		git http.sslVerify=false
+command: git config --global http.sslVerify false
+Example:
 
  ******************************* MANAGEMENT REPOSITORY ******************************
 -- delete BRANCH
