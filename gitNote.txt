@@ -167,6 +167,21 @@ git push origin --tags
 git tag -a gestor-s3archivos-reja-1.0 -m "S3archivos Tag 1.0"
 
 
+describe : lista los commits en un formatter bonito
+command  : git log --pretty=format:"%h - %an, %ar : %s"
+Example  : 56a1a9f - erick11, 7 minutes ago : feate: add dependecy management configuration
+           d8d0e74 - erick11, 16 minutes ago : feate: add configuration LOGs
+           30d622f - erick11, 21 minutes ago : chore: second commit basic folder structure
+           ec4349d - erick11, 25 minutes ago : chore: first commit
+
+describe : Revirte a un commit anterior, pero mantiene un historial 
+command  : git revert [id_commit]
+Example  : git revert d8d0e74
+
+describe : Estar totalmente seguro | se recomiendo hacer en local | no mantiene un historial
+command  : git reset --hard [id_commit]
+Example  : git reset --hard d8d0e74
+
 ** salir 
 
 
